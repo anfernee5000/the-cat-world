@@ -5,9 +5,15 @@
    directly */
 
 /* type definiation for LPC types. */
+#if __WORDSIZE == 64
 typedef int64_t LPC_INT;
 #define LPC_INT_MAX INT64_MAX
 #define LPC_INT_MIN INT64_MIN
+#else
+typedef int32_t LPC_INT;
+#define LPC_INT_MAX INT32_MAX
+#define LPC_INT_MIN INT32_MIN
+#endif
 
 typedef double LPC_FLOAT;
 #define LPC_FLOAT_MAX DBL_MAX
