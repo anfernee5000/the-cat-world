@@ -3637,7 +3637,18 @@ f_undefinedp (void)
 void
 f_uptime (void)
 {
-    push_number(current_time - boot_time);
+    long uptime;
+
+    if (sp->u.number) {
+        struct timeval current;
+        gettimeofday(&current, NULL);
+        uptime = ((current.tv_sec - boot_time) * 100) + (current.tv_usec / 10000);
+    } else {
+        uptime = current_time - boot_time;
+    }
+
+    pop_stack();
+    push_number(uptime);
 }
 #endif
 

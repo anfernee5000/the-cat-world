@@ -322,7 +322,7 @@ void message(mixed, mixed, string | string * | object | object *,
 #ifdef COMPAT_32
     void raise_error error(string);
 #endif
-    int uptime();
+    int uptime(int default: 0);
     int strcmp(string, string);
 
 #ifndef WIN32
